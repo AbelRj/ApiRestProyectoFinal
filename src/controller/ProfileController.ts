@@ -27,6 +27,7 @@ export class ProfileController {
       });
     }
   };
+  
   static update = async (req:Request, res: Response) =>{
     let profile;
     const {id}=req.params;
