@@ -20,7 +20,7 @@ export class User {
     password: string
 
     @Column()
-    @IsNotEmpty()
+   // @IsNotEmpty()
     role: string
 
     @CreateDateColumn()
@@ -28,14 +28,14 @@ export class User {
 
     @UpdateDateColumn()
     updatedAt: Date
-
+/*
 @OneToOne(()=>Profile,(profile)=>profile.id,{
     cascade:true,
     onDelete:"CASCADE"
 })
 @JoinColumn()
 profile:Profile;
-
+*/
 
     hashPassword(): void {
         const salt = bcrypt.genSaltSync(12)

@@ -7,9 +7,10 @@ export class Photo {
   id:number;
   @Column()
   url:string;
-
+/*
   @ManyToOne(()=>Profile,(profile)=>profile.photos,{
     onDelete:"CASCADE"
   })
   profile:Profile;
+  */
 }

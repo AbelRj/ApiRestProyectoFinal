@@ -31,7 +31,7 @@ export class ProductController{
         }catch(e){
             return res.status(409).json({message:'category already exists'});
         }
-        res.send('product created');
+        return res.status(200).json(product);
     }
 
     static getAll = async(req:Request,res:Response)=>{

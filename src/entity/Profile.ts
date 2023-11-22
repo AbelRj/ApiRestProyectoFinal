@@ -9,7 +9,7 @@ export class Profile{
     id: number;
     @Column()
     name: string;
-
+/*
     @OneToOne(()=>User,(user)=>user.profile,{
         onDelete:"CASCADE"
     })
@@ -20,5 +20,5 @@ export class Profile{
     })
     photos:Photo[]
     profile:Profile
-
+*/
 }

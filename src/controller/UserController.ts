@@ -10,14 +10,14 @@ import { Photo } from "../entity/Photo";
 export class UserController {
 
     static newUser = async (req:Request, res:Response) => {
-        const photoRepo = AppDataSource.getRepository(Photo)
-        const {username,password,role,name,photos} = req.body
+        //const photoRepo = AppDataSource.getRepository(Photo);
+        const {username,password,role/*,name,photos*/} = req.body
         const user = new User();
         user.username =username;
         user.password= password;
         user.role = role;
 
-        const photoToSave:Photo[]=[];
+       /* const photoToSave:Photo[]=[];
         for(let i=0;i<photos.length;i++){
             const photoi = new Photo();
             photoi.url=photos[i];
@@ -35,7 +35,7 @@ export class UserController {
         profile.name = name;
         profile.photos = photoToSave;
         user.profile = profile;
-
+*/
 
 
         const validationOpt = {validationError: {target: false, value: false}};
@@ -47,12 +47,16 @@ export class UserController {
             user.hashPassword();
             await userRepository.save(user);
         } catch (error){
+            console.error('Error al guardar el usuario:', error);
             return res.status(500).json({message:"Error creating user",
         error: error.message})
         }
-        return res.status(201).json({
-            message:"User created"
-        })
+        return res.status(200).json({
+            message: 'User created successfully',
+            token: 'your-token',  // Puedes proporcionar el token si es relevante
+            status: 200,
+            user: user  // Puedes incluir el objeto del usuario si es relevante
+        });
     }
 
     static getUsers = async (req:Request, res:Response) => {
